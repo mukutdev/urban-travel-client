@@ -6,12 +6,12 @@ import { BsInstagram , BsGithub ,BsLinkedin } from 'react-icons/bs';
 const Footer = () => {
     return (
         
-<div className="p-4 bg-white sm:p-6 dark:bg-gray-900  mt-20">
-<footer className="container mx-auto ">
+<div className="p-4 bg-sky-500 sm:p-6 dark:bg-gray-900  mt-20">
+<footer className="container mx-auto py-8 text-white ">
     <div className="md:flex ">
         <div className="mb-6 md:mb-0 md:w-1/3">
             <a href="https://flowbite.com/" className="flex items-center">
-                <Link className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Travel Agency</Link>
+                <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Travel Agency</span>
             </a>
         </div>
         <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3 md:w-2/3 md:justify-end">
@@ -65,19 +65,19 @@ const Footer = () => {
         </span>
         <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
 
-            <a href="/" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+            <a href="/" className=" hover:text-gray-900 dark:hover:text-white">
                 <ImFacebook />
                 <span className="sr-only">Facebook</span>
             </a>
-            <a href="/" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+            <a href="/" className=" hover:text-gray-900 dark:hover:text-white">
                 <BsInstagram />
                 <span className="sr-only">Instagram</span>
             </a>
-            <a href="/" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+            <a href="/" className=" hover:text-gray-900 dark:hover:text-white">
                 <BsGithub/>
                 <span className="sr-only">GitHub</span>
             </a>
-            <a href="/" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+            <a href="/" className=" hover:text-gray-900 dark:hover:text-white">
                 <BsLinkedin/>
                 <span className="sr-only">LinkedIn</span>
             </a>

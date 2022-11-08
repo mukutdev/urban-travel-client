@@ -27,13 +27,13 @@ const Header = () => {
           </NavLink>
           <NavLink
             style={({ isActive }) => (isActive ? activeClass : undefined)}
-            className="text-xl font-medium px-6 py-2 rounded-sm"
+            className="text-xl font-medium px-6 py-2 rounded"
             to={"/services"}
           >
             Services
           </NavLink>
           <NavLink
-            className="text-xl font-medium px-6 py-2 bg-sky-500 text-white rounded-sm"
+            className="text-xl font-medium px-6 py-2 bg-orange-500 hover:bg-sky-500 text-white rounded"
             to={"/login"}
           >
             Log in
