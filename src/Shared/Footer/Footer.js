@@ -16,8 +16,8 @@ const Footer = () => {
         </div>
         <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3 md:w-2/3 md:justify-end">
             <div className='md:text-right'>
-                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Quick Links</h2>
-                <ul className="text-gray-600 dark:text-gray-400">
+                <h2 className="mb-6 text-sm font-semibold  uppercase dark:text-white">Quick Links</h2>
+                <ul className=" dark:text-gray-400">
                     <li className="mb-4">
                         <Link to={'/'} className="hover:underline">Home</Link>
                     </li>
@@ -30,8 +30,8 @@ const Footer = () => {
                 </ul>
             </div>
             <div className='md:text-right'>
-                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Popular Trip</h2>
-                <ul className="text-gray-600 dark:text-gray-400">
+                <h2 className="mb-6 text-sm font-semibold  uppercase dark:text-white">Popular Trip</h2>
+                <ul className=" dark:text-gray-400">
                     <li className="mb-4">
                         <a href="https://github.com/themesberg/flowbite" className="hover:underline ">Coxbazar Trip</a>
                     </li>
@@ -44,8 +44,8 @@ const Footer = () => {
                 </ul>
             </div>
             <div className='md:text-right'>
-                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources Use</h2>
-                <ul className="text-gray-600 dark:text-gray-400">
+                <h2 className="mb-6 text-sm font-semibold  uppercase dark:text-white">Resources Use</h2>
+                <ul className=" dark:text-gray-400">
                     <li className="mb-4">
                         <a href="https://reactjs.org/" className="hover:underline"> React Js</a>
                     </li>
@@ -59,25 +59,25 @@ const Footer = () => {
             </div>
         </div>
     </div>
-    <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+    <hr className="my-6 border-gray-200 sm:mx-auto  lg:my-8" />
     <div className="sm:flex sm:items-center sm:justify-between">
-        <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="https://flowbite.com/" className="hover:underline">Travel Agency™</a>. All Rights Reserved.
+        <span className="text-sm  sm:text-center ">© 2022 <a href="https://flowbite.com/" className="hover:underline">Travel Agency™</a>. All Rights Reserved.
         </span>
         <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
 
-            <a href="/" className=" hover:text-gray-900 dark:hover:text-white">
+            <a href="/" className="">
                 <ImFacebook />
                 <span className="sr-only">Facebook</span>
             </a>
-            <a href="/" className=" hover:text-gray-900 dark:hover:text-white">
+            <a href="/" className="">
                 <BsInstagram />
                 <span className="sr-only">Instagram</span>
             </a>
-            <a href="/" className=" hover:text-gray-900 dark:hover:text-white">
+            <a href="/" className="">
                 <BsGithub/>
                 <span className="sr-only">GitHub</span>
             </a>
-            <a href="/" className=" hover:text-gray-900 dark:hover:text-white">
+            <a href="/" className=" ">
                 <BsLinkedin/>
                 <span className="sr-only">LinkedIn</span>
             </a>
