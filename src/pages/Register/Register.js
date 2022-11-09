@@ -2,7 +2,7 @@ import React from 'react';
 import BgImage from '../../components/BgImage/BgImage';
 import regImg from "../../assets/images//pexels-suliman-sallehi-2128181.jpg";
 import { Button, Label, TextInput } from 'flowbite-react';
-import { FcGoogle } from 'react-icons/fc';
+import { AiOutlineUserAdd , AiOutlineLink} from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { MdOutlineVpnKey } from 'react-icons/md';
 import { FaRegEnvelope } from 'react-icons/fa';
@@ -42,9 +42,9 @@ const Register = () => {
                 type="text"
                 placeholder="John Smith"
                 required={true}
-                icon={FaRegEnvelope}
+                icon={AiOutlineUserAdd}
               />
-              <div className="mb-2 block">
+              <div className="mt-3 mb-1 block">
                 <Label htmlFor="email4" value="Your email" />
               </div>
               <TextInput
@@ -55,18 +55,18 @@ const Register = () => {
                 required={true}
                 icon={FaRegEnvelope}
               />
-              <div className="mb-2 block">
+              <div className="mt-3 mb-1 block">
                 <Label htmlFor="photo" value="Enter photo url" />
               </div>
               <TextInput
                 id="photo"
-                name="email"
-                type="email"
-                placeholder="name@element.com"
+                name="photoUrl"
+                type="text"
+                placeholder="https/imgbb/your-photo.png"
                 required={true}
-                icon={FaRegEnvelope}
+                icon={AiOutlineLink}
               />
-              <div className="mb-2 block mt-3">
+              <div className="mt-3 mb-1 block">
                 <Label htmlFor="pass4" value="Your Password" />
               </div>
               <TextInput
@@ -78,15 +78,12 @@ const Register = () => {
                 icon={MdOutlineVpnKey}
               />
               <Button className="my-5 w-full" type="submit">
-                Login To Your Account
-              </Button>
-              <Button className="my-5 w-full bg-slate-200 font-medium text-black hover:bg-slate-100 " type="submit">
-               <FcGoogle className="text-lg mr-2 mt-1 "/> <span className="text-lg">Login using Google</span>
+                Register
               </Button>
             </form>
 
                 <p>
-                 New user ? <Link to={'/register'} className="underline">Create an account</Link>
+                 Already have an account ? <Link to={'/login'} className="underline">Login Now</Link>
                 </p>
           </div>
         </div>
