@@ -11,6 +11,11 @@ const Header = () => {
     color: "#fff",
   };
 
+  const logout = ()=>{
+    handleLogoutUser()
+    .then(() =>{})
+    .catch(err => console.log(err))
+  }
   return (
     <div className="container mx-auto py-4">
       <Navbar fluid={true} rounded={true}>
@@ -35,12 +40,40 @@ const Header = () => {
           >
             Services
           </NavLink>
+           
+           {
+            user?.uid ? <div>
+              <NavLink
+            style={({ isActive }) => (isActive ? activeClass : undefined)}
+            className="text-xl font-medium px-6 py-2 rounded"
+            to={"/addnewservice"}
+          >
+            Add Service
+          </NavLink>
           <NavLink
-            className="text-xl font-medium px-6 py-2 bg-orange-500 hover:bg-sky-500 text-white rounded"
+            style={({ isActive }) => (isActive ? activeClass : undefined)}
+            className="text-xl font-medium px-6 py-2 rounded"
+            to={"/myreviews"}
+          >
+            My Reviews
+          </NavLink>
+            <span className="text-lg mr-2"> Hello , {user?.displayName}</span>
+            <button onClick={logout}
+            className="text-xl font-medium px-6 py-2 bg-sky-500 hover:bg-orange-500 text-white rounded"
             to={"/login"}
           >
-            Log in
-          </NavLink>
+            Log Out
+          </button></div> :
+           <NavLink
+           className="text-xl font-medium px-6 py-2 bg-orange-500 hover:bg-sky-500 text-white rounded"
+           to={"/login"}
+         >
+           Log in
+         </NavLink>
+
+           }
+         
+          
         </Navbar.Collapse>
       </Navbar>
     </div>

@@ -44,8 +44,8 @@ const AuthContext = ({children}) => {
     //logout user
 
     const handleLogoutUser =()=>{
-        setLoading(true)
-        return signOut()
+        // setLoading(true)
+        return signOut(auth)
     }
 
     // log in using google account
