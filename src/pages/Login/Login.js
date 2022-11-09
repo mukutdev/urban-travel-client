@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import BgImage from "../../components/BgImage/BgImage";
 import loginImg from "../../assets/images//pexels-suliman-sallehi-2128181.jpg";
 import { Button, Label, TextInput } from "flowbite-react";
@@ -6,9 +6,12 @@ import { FaRegEnvelope } from "react-icons/fa";
 import { MdOutlineVpnKey } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import { AuthProvider } from "../../context/AuthContext";
 
 const Login = () => {
-  const handleLoginUser = e => {
+
+    const { handleLoginUser , handleGoogleLogin} = useContext(AuthProvider)
+  const handleUserLogin = e => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
@@ -33,7 +36,7 @@ const Login = () => {
             <h2 className="text-center text-xl font-medium">
               Login To Your Account
             </h2>
-            <form onSubmit={handleLoginUser} className="mt-7">
+            <form onSubmit={handleUserLogin} className="mt-7">
               <div className="mb-2 block">
                 <Label htmlFor="email4" value="Your email" />
               </div>
