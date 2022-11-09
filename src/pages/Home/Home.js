@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import banner from '../../assets/images/banner-1.jpg';
+import Activity from '../../components/Activity/Activity';
 import TripCard from '../../components/TripCard/TripCard';
 
 const Home = () => {
@@ -59,8 +60,23 @@ const Home = () => {
             <div className="my-12 grid md:grid-cols-3 grid-cols-1 justify-between gap-14">
                    {
                     upcomingTrips.map(trip => <TripCard key={trip._id} trips={trip}></TripCard>)
-                   } 
+                   }
             </div>
+             <div className='flex justify-center'>  
+                   <Link to={'/services'}>  <button className="bg-orange-500 text-lg font-medium py-2 px-8 text-white mt-7 hover:bg-sky-500">View All Trips</button></Link>
+         </div>
+          </div>
+
+          <div className='my-14'>
+          <h2 className="text-orange-500 text-lg text-center font-semibold tracking-widest">
+             TRAVEL BY ACTIVITY
+            </h2>
+            <h3 className="md:text-4xl text-2xl font-semibold text-center mt-4 dark:text-white">
+               ADVENTURE & ACTIVITY
+            </h3>
+                <div className='w-5/6 mx-auto my-5'>
+                <Activity/>   
+                </div>
           </div>
       </div>
 
