@@ -35,7 +35,7 @@ const Footer = () => {
                     <li className="mb-4">
                         <a href="https://github.com/themesberg/flowbite" className="hover:underline ">Coxbazar Trip</a>
                     </li>
-                    <li className="mb-4">
+                    <li className="mb-4">``
                         <a href="https://discord.gg/4eeurUVvTy" className="hover:underline">Rangamati Trip</a>
                     </li>
                     <li className="mb-4">

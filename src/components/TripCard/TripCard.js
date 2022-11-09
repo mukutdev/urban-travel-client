@@ -13,7 +13,7 @@ const TripCard = ({trips}) => {
     return (
         <div className='shadow-lg'>
             <div className=' relative w-full'>
-                <img className='h-80' src={thumbnail} alt="" />
+                <img className='h-80 w-full' src={thumbnail} alt="" />
 
                 <div className='bg-sky-500 w-full px-4 py-3 flex justify-between gap-2 list-none absolute bottom-0 '>
                  <li className='flex gap-1 text-white items-center'><AiOutlineClockCircle/> <span>{tripLength.duration}</span></li>
@@ -35,7 +35,7 @@ const TripCard = ({trips}) => {
                         }
                         </p>
                         <p className='text-lg '>{tripDetails.slice(0 ,100)}</p>
-                        <Link >
+                        <Link to={`/services/${_id}`}>
                             <button className='bg-orange-500 text-lg font-medium py-2 px-8 text-white mt-7 hover:bg-sky-500'>See Trip Details</button>
                         </Link>
                 </div>
