@@ -1,15 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import BgImage from "../../components/BgImage/BgImage";
 import singleServiceImg from "../../assets/images//pexels-suliman-sallehi-2128181.jpg";
-import { useParams } from "react-router-dom";
-import { AiOutlineClockCircle, AiTwotoneStar } from "react-icons/ai";
+import { Link, useParams } from "react-router-dom";
+import {
+  AiOutlineClockCircle,
+  AiTwotoneStar,
+  AiOutlineUserAdd,
+  AiOutlineLink,
+} from "react-icons/ai";
 import { ImLocation } from "react-icons/im";
 import { FiUsers } from "react-icons/fi";
-import { FaDollarSign, FaPlaneDeparture } from "react-icons/fa";
+import { FaDollarSign, FaPlaneDeparture, FaRegEnvelope } from "react-icons/fa";
 import { IoMdReturnLeft } from "react-icons/io";
+import { AuthProvider } from "../../context/AuthContext";
+// import Login from "../Login/Login";
+import { Label, Select, Textarea, TextInput } from "flowbite-react";
 const SingleService = () => {
+  const { user } = useContext(AuthProvider);
   const { id } = useParams();
   const [singleTrip, setSingleTrip] = useState({});
+
+  const [star , setStar] = useState(5)
+
   useEffect(() => {
     fetch(`http://localhost:5000/trips/${id}`)
       .then(res => res.json())
@@ -31,7 +43,29 @@ const SingleService = () => {
     tripDetails,
   } = singleTrip;
 
-  console.log(singleTrip?.tripLength);
+  //submit review function
+
+  const submitReview = e => {
+    e.preventDefault();
+    const form = e.target;
+    
+    const reviewErInfo = {
+        id : _id,
+        serviceName : tripName,
+        reviewerName : form.name.value,
+        reviewerEmail : user?.email,
+        date : new Date(),
+        starRatings : parseInt(star),
+        comments : form.comments.value,
+        photoURL : form.photoUrl.value
+    }
+    console.log(reviewErInfo);
+
+  };
+
+  console.log(user);
+
+
   return (
     <div>
       <BgImage img={singleServiceImg} content={`${tripName}`} />
@@ -100,6 +134,101 @@ const SingleService = () => {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="review-section my-14 bg-white mx-auto container rounded-lg p-6 ">
+            <div>
+              <h2 className="text-center font-medium text-2xl">
+                Latest Reviews
+              </h2>
+              <div className="reviews-area">here all review fetched</div>
+            </div>
+
+            <div className="w-1/3 mx-auto my-10">
+              {user?.uid ? (
+                <div className="shadow p-6 mt-8">
+                  <h2 className="text-center text-lg mb-4 font-medium">
+                    Share Your Experience in this trip
+                  </h2>
+                  <form onSubmit={submitReview}>
+                    <div className="mb-2 block">
+                      <Label htmlFor="name4" value="Your name" />
+                    </div>
+                    <TextInput
+                      id="name4"
+                      name="name"
+                      type="text"
+                      defaultValue={user?.displayName}
+                      required={true}
+                      icon={AiOutlineUserAdd}
+                    />
+                    <div className="mb-2 mt-2 block">
+                      <Label htmlFor="email4" value="Your email" />
+                    </div>
+                    <TextInput
+                      id="email4"
+                      name="email"
+                      type="email"
+                      readOnly
+                      defaultValue={user?.email}
+                      required={true}
+                      icon={FaRegEnvelope}
+                    />
+                    <div className="mb-2 mt-2 block">
+                      <Label htmlFor="photourl" value="Photo Url" />
+                    </div>
+                    <TextInput
+                      id="photourl"
+                      name="photoUrl"
+                      type="text"
+                      defaultValue={user?.photoURL ? user?.photoURL : ""}
+                      required={true}
+                      icon={AiOutlineLink}
+                    />
+                    
+                    <div id="select">
+                      <div className="mb-2 mt-3 block">
+                        <Label
+                          htmlFor="ratings"
+                          value="How many star you want to give?"
+                        />
+                      </div>
+                      <Select onChange={(e) => setStar(e.target.value)} id="ratings" required={true}>
+                        <option value={5}>5</option>
+                        <option value={4}>4</option>
+                        <option value={3}>3</option>
+                        <option value={2}>2</option>
+                        <option value={1}>1</option>
+                      </Select>
+                    </div>
+                    <div className="mb-2 mt-3 block">
+                      <Label htmlFor="comment" value="Share Your Experience" />
+                    </div>
+                    <Textarea
+                      id="comment"
+                      name="comments"
+                      placeholder="Leave a comment..."
+                      required={true}
+                      rows={4}
+                    />
+                    <button
+                      className="my-5 bg-sky-500 hover:bg-orange-500 rounded py-2 text-white font-medium  w-full text-lg"
+                      type="submit"
+                    >
+                      Submit Review
+                    </button>
+                  </form>
+                </div>
+              ) : (
+                <div>
+                  <p className="text-center text-lg">
+                    To add review please{" "}
+                    <Link className="underline text-blue-600" to={"/login"}>
+                      login first
+                    </Link>
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
