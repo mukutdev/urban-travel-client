@@ -26,11 +26,12 @@ const SingleService = () => {
     fetch(`http://localhost:5000/trips/${id}`)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         setSingleTrip(data);
       })
       .catch(err => console.log(err));
   }, [id]);
+
+ 
 
   const {
     _id,
@@ -59,11 +60,26 @@ const SingleService = () => {
         comments : form.comments.value,
         photoURL : form.photoUrl.value
     }
-    console.log(reviewErInfo);
+
+        fetch('http://localhost:5000/reviews' , {
+            method : 'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(reviewErInfo)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(err => console.log(err))
+
+
+
+
 
   };
-
-  console.log(user);
+//   console.log(user);
 
 
   return (
