@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import BgImage from "../../components/BgImage/BgImage";
 import loginImg from "../../assets/images//pexels-suliman-sallehi-2128181.jpg";
-import { Button, Label, TextInput } from "flowbite-react";
+import { Label, TextInput } from "flowbite-react";
 import { FaRegEnvelope } from "react-icons/fa";
 import { MdOutlineVpnKey } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";

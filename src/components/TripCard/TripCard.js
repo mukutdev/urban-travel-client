@@ -29,7 +29,7 @@ const TripCard = ({ trips }) => {
             <AiOutlineClockCircle /> <span>{tripLength.duration}</span>
           </li>
           <li className="flex gap-1 text-white items-center">
-            <FiUsers /> <span>People: {capacity}</span>
+            <FiUsers /> <span>Capacity: {capacity}</span>
           </li>
           <li className="flex gap-1 text-white items-center">
             <ImLocation /> <span>{location}</span>
