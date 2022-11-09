@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import BgImage from '../../components/BgImage/BgImage';
 import regImg from "../../assets/images//pexels-suliman-sallehi-2128181.jpg";
 import { Button, Label, TextInput } from 'flowbite-react';
@@ -6,21 +6,30 @@ import { AiOutlineUserAdd , AiOutlineLink} from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { MdOutlineVpnKey } from 'react-icons/md';
 import { FaRegEnvelope } from 'react-icons/fa';
+import {AuthProvider} from '../../context/AuthContext';
 const Register = () => {
+
+    const { handleUserRegistration , updateUserProfile } = useContext(AuthProvider)
 
     const handleSubmitUser = e => {
         e.preventDefault();
         const form = e.target;
+        const name = form.name.value;
+        const photoUrl = form.photoUrl.value;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
-        // handleUserSignIn(email, password)
-        //   .then(result => {
-        //     const user = result.user;
-        //     console.log(user);
-        //     navigate(from, { replace: true });
-        //   })
-        //   .catch(err => console.log(err));
+         
+        handleUserRegistration(email , password)
+        .then(result =>{
+            const user = result.user
+            console.log(user);
+            updateUserProfile(name, photoUrl)
+            .then(() =>{})
+            .catch(err => console.log(err))
+        })
+        .catch(err => console.log(err))
+
       };
 
     return (
