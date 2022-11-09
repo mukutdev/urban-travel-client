@@ -26,9 +26,9 @@ const Register = () => {
             console.log(user);
             updateUserProfile(name, photoUrl)
             .then(() =>{})
-            .catch(err => console.log(err))
+            .catch(err => console.log(err.message))
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(err.message))
 
       };
 
