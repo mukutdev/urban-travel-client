@@ -78,6 +78,26 @@ const Home = () => {
                 <Activity/>   
                 </div>
           </div>
+          <div className='my-14'>
+          <h2 className="text-orange-500 text-lg text-center font-semibold tracking-widest">
+             NewsLetter
+            </h2>
+            <h3 className="md:text-4xl text-2xl font-semibold text-center mt-4 dark:text-white">
+               Subscribe To My NewsLetter
+            </h3>
+                <div className='w-5/6 mx-auto my-10 bg-sky-500 rounded'>
+                    <div className='flex justify-between py-20 px-28 items-center'>
+                    <div>
+                        <h2 className='text-white font-bold text-4xl'>Get latest Trips update</h2>
+                        <p className='text-white pt-5 font-medium text-lg'> Subscribe to my newsletter to get latest trips updates </p>
+                    </div>
+                    <div>
+                        <input className='border-0 w-full' type="email" placeholder='Enter Your Email Address' />
+                        <input className='bg-orange-500 w-full text-white py-2 px-6' type="submit" value="Subscribe Now" />
+                    </div>
+                    </div>
+                </div>
+          </div>
       </div>
 
 
