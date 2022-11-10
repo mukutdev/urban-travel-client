@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ImFacebook } from 'react-icons/im';
 import { BsInstagram , BsGithub ,BsLinkedin } from 'react-icons/bs';
 
 const Footer = () => {
+
+    const [trips , setTrips] = useState([])
+    
+    // const limit = 3 
+
+    useEffect(()=>{
+
+        fetch(`http://localhost:5000/trips/upcoming`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            setTrips(data)
+        })
+
+
+    }, [])
+
+
     return (
         
 <div className="p-4 bg-sky-500 sm:p-6 dark:bg-gray-900  mt-20">
@@ -32,15 +50,10 @@ const Footer = () => {
             <div className='md:text-right'>
                 <h2 className="mb-6 text-sm font-semibold  uppercase dark:text-white">Popular Trip</h2>
                 <ul className=" dark:text-gray-400">
-                    <li className="mb-4">
-                        <a href="https://github.com/themesberg/flowbite" className="hover:underline ">Coxbazar Trip</a>
-                    </li>
-                    <li className="mb-4">``
-                        <a href="https://discord.gg/4eeurUVvTy" className="hover:underline">Rangamati Trip</a>
-                    </li>
-                    <li className="mb-4">
-                        <a href="https://discord.gg/4eeurUVvTy" className="hover:underline">Sajek Trip</a>
-                    </li>
+                    {
+                        trips.map(t => <li key={t._id} className="py-2"><Link   to={`/services/${t._id}`} className="hover:underline " > {t.tripName} </Link></li>)
+                    }
+
                 </ul>
             </div>
             <div className='md:text-right'>
