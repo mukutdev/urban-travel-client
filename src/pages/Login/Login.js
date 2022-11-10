@@ -5,13 +5,18 @@ import { Label, TextInput } from "flowbite-react";
 import { FaRegEnvelope } from "react-icons/fa";
 import { MdOutlineVpnKey } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link,  useLocation, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../../context/AuthContext";
 
 const Login = () => {
 
-    const {user , handleLoginUser , handleGoogleLogin} = useContext(AuthProvider)
-    const [errMessage , setErrMessage] = useState('')
+  const {user , handleLoginUser , handleGoogleLogin} = useContext(AuthProvider)
+  const [errMessage , setErrMessage] = useState('')
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from.pathname || '/'
+
+
   const handleUserLogin = e => {
     e.preventDefault();
     const form = e.target;
@@ -22,7 +27,7 @@ const Login = () => {
       .then(() => {
         form.reset()
         setErrMessage('Logged In Successfully')
-        // navigate(from, { replace: true });
+        navigate(from , {replace : true})
       })
       .catch(err => {
         setErrMessage(err.message)
@@ -35,6 +40,7 @@ const Login = () => {
     .then(result =>{
         const user = result.user
         console.log(user);
+        navigate(from , {replace : true})
     })
     .catch(err => console.log(err))
   }

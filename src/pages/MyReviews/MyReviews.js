@@ -37,7 +37,7 @@ const MyReviews = () => {
       })
       .then((willDelete) => {
         if (willDelete) {
-          fetch(`http://localhost:5000/emailBase/${id}` , {
+          fetch(`https://travel-server-mukutdev.vercel.app/emailBase/${id}` , {
               method: 'DELETE',
           })
           .then(res => res.json())

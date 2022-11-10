@@ -8,8 +8,9 @@ import { AuthProvider } from "../../context/AuthContext";
 
 const UpdateReview = () => {
 
-   const {id} = useParams()
-   console.log(id); 
+   const router = useParams()
+   const {id} = router
+   console.log('its router' ,router); 
 //   
   const { user } = useContext(AuthProvider);
 //   const review = useLoaderData();
@@ -18,7 +19,7 @@ const UpdateReview = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`https://travel-server-mukutdev.vercel.app/emailbase/${id}`)
+    fetch(`http://localhost:5000/emailbase/${id}`)
       .then(res => res.json())
       .then(data => {
         console.log(data);
@@ -44,7 +45,9 @@ const UpdateReview = () => {
       photoURL: form.photoUrl.value,
     };
 
-    fetch(`https://travel-server-mukutdev.vercel.app/emailBase/${review.id}`, {
+    console.log(updateSiteData);
+
+    fetch(`http://localhost:5000/emailBase/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
