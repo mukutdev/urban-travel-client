@@ -1,12 +1,15 @@
+import { Tooltip } from "flowbite-react";
 import React, { useContext, useEffect, useState } from "react";
 import { AiTwotoneStar } from "react-icons/ai";
-import { FiEdit , FiTrash2 } from "react-icons/fi";
+import { FiEdit, FiTrash2 } from "react-icons/fi";
+import swal from "sweetalert";
 import myReviewImg from "../../assets/images//pexels-suliman-sallehi-2128181.jpg";
 import BgImage from "../../components/BgImage/BgImage";
 import { AuthProvider } from "../../context/AuthContext";
 const MyReviews = () => {
   const { user } = useContext(AuthProvider);
   const [myReviews, setMyReviews] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:5000/emailBase?email=${user?.email}`)
@@ -16,6 +19,38 @@ const MyReviews = () => {
         setMyReviews(data);
       });
   }, [user?.email]);
+
+
+  const handleDeleteReview = id =>{
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, when you delete the review , it will remove from website",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          fetch(`http://localhost:5000/emailBase/${id}` , {
+              method: 'DELETE',
+          })
+          .then(res => res.json())
+          .then(data =>{
+            if(data.deletedCount){
+              const remaining = myReviews.filter(site => site._id !== id)
+              setMyReviews(remaining)
+              swal("Poof! your review has been deleted!", {
+                icon: "success",
+              });
+            } 
+          })  
+         
+        }
+        else{
+          swal("Your review  is safe!"); 
+        }
+      });
+  }
 
   return (
     <div>
@@ -65,11 +100,20 @@ const MyReviews = () => {
                       </h2>
                       <p className="py-2">{singleReview.comments}</p>
                     </div>
-                    <div className="action ml-auto mr-9">
-                        <button   className="bg-green-500 text-lg  p-2 text-white mr-2 rounded "><FiEdit></FiEdit></button>
-                        <button><FiTrash2/></button>
+                    <div className="action ml-auto mr-9 flex">
+                      <Tooltip content="Edit Review" style="light">
+                        <button className="bg-green-500 text-lg  p-2 text-white mr-2 rounded ">
+                          <FiEdit></FiEdit>
+                        </button>
+                      </Tooltip>
+                      <Tooltip content="Delete Review" style="light">
+                        <button onClick={()=>handleDeleteReview(singleReview._id)} className="bg-red-500 text-lg  p-2 text-white mr-2 rounded ">
+                        <FiTrash2 />
+                        </button>
+                      </Tooltip>
 
-                      </div>
+                      
+                    </div>
                   </div>
                 );
               })
