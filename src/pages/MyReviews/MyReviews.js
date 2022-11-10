@@ -15,7 +15,7 @@ const MyReviews = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch(`http://localhost:5000/emailBase?email=${user?.email}`)
+    fetch(`https://travel-server-mukutdev.vercel.app/emailBase?email=${user?.email}`)
       .then(res => res.json())
       .then(data => {
         console.log(data);

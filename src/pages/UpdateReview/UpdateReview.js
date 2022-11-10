@@ -18,7 +18,7 @@ const UpdateReview = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/emailbase/${id}`)
+    fetch(`https://travel-server-mukutdev.vercel.app/emailbase/${id}`)
       .then(res => res.json())
       .then(data => {
         console.log(data);
@@ -44,7 +44,7 @@ const UpdateReview = () => {
       photoURL: form.photoUrl.value,
     };
 
-    fetch(`http://localhost:5000/emailBase/${review.id}`, {
+    fetch(`https://travel-server-mukutdev.vercel.app/emailBase/${review.id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

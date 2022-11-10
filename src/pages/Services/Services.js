@@ -8,7 +8,7 @@ const Services = () => {
     
     useEffect(()=>{
 
-        fetch(`http://localhost:5000/trips`)
+        fetch(`https://travel-server-mukutdev.vercel.app/trips`)
         .then(res => res.json())
         .then(data => {
             console.log(data);

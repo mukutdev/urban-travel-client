@@ -12,7 +12,7 @@ const Home = () => {
 
     useEffect(()=>{
 
-        fetch(`http://localhost:5000/trips/upcoming`)
+        fetch(`https://travel-server-mukutdev.vercel.app/trips/upcoming`)
         .then(res => res.json())
         .then(data => {
             console.log(data);

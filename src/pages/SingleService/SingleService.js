@@ -24,7 +24,7 @@ const SingleService = () => {
   const [tripReview , setTripReview] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/trips/${id}`)
+    fetch(`https://travel-server-mukutdev.vercel.app/trips/${id}`)
       .then(res => res.json())
       .then(data => {
         setSingleTrip(data);
@@ -62,7 +62,7 @@ const SingleService = () => {
         photoURL : form.photoUrl.value
     }
 
-        fetch('http://localhost:5000/reviews' , {
+        fetch('https://travel-server-mukutdev.vercel.app/reviews' , {
             method : 'POST',
             headers:{
                 'content-type': 'application/json'
@@ -79,7 +79,7 @@ const SingleService = () => {
 
   useEffect(()=>{
 
-            fetch(`http://localhost:5000/reviews?id=${_id}`)
+            fetch(`https://travel-server-mukutdev.vercel.app/reviews?id=${_id}`)
             .then(res => res.json())
             .then(data =>{
                 console.log(data);

@@ -11,7 +11,7 @@ const Footer = () => {
 
     useEffect(()=>{
 
-        fetch(`http://localhost:5000/trips/upcoming`)
+        fetch(`https://travel-server-mukutdev.vercel.app/trips/upcoming`)
         .then(res => res.json())
         .then(data => {
             console.log(data);
@@ -29,7 +29,7 @@ const Footer = () => {
     <div className="md:flex ">
         <div className="mb-6 md:mb-0 md:w-1/3">
             <a href="https://flowbite.com/" className="flex items-center">
-                <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Travel Agency</span>
+                <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">URBAN TRAVEL</span>
             </a>
         </div>
         <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3 md:w-2/3 md:justify-end">

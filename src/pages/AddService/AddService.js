@@ -29,7 +29,7 @@ const AddService = () => {
         }
         console.log(tripDetails);
 
-        fetch('http://localhost:5000/trips' , {
+        fetch('https://travel-server-mukutdev.vercel.app/trips' , {
             method:'POST',
             headers:{
                 'content-type' : 'application/json'

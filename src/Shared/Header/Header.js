@@ -21,9 +21,9 @@ const Header = () => {
       <Navbar fluid={true} rounded={true}>
         <Link
           to={"/"}
-          className="self-center whitespace-nowrap text-xl font-semibold dark:text-white"
+          className="self-center whitespace-nowrap text-xl font-semibold text-sky-500 dark:text-white"
         >
-          Travel Agency
+          URBAN TRAVEL
         </Link>
         <Navbar.Toggle />
         <Navbar.Collapse>
