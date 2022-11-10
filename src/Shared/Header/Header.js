@@ -40,6 +40,13 @@ const Header = () => {
           >
             Services
           </NavLink>
+          <NavLink
+            style={({ isActive }) => (isActive ? activeClass : undefined)}
+            className="text-xl font-medium px-6 py-2 rounded"
+            to={"/blogs"}
+          >
+            Blogs
+          </NavLink>
            
            {
             user?.uid ? <div>

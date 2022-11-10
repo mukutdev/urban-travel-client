@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
                 element:<Register />,
             },
             {
-                path:'/blog',
+                path:'/blogs',
                 element:<Blog />,
             }
         ]
