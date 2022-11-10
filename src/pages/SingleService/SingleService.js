@@ -13,14 +13,14 @@ import { FiUsers } from "react-icons/fi";
 import { FaDollarSign, FaPlaneDeparture, FaRegEnvelope } from "react-icons/fa";
 import { IoMdReturnLeft } from "react-icons/io";
 import { AuthProvider } from "../../context/AuthContext";
-// import Login from "../Login/Login";
 import { Label, Select, Textarea, TextInput } from "flowbite-react";
+import ReviewCard from "../../components/ReviewCard/ReviewCard";
 const SingleService = () => {
   const { user } = useContext(AuthProvider);
   const { id } = useParams();
   const [singleTrip, setSingleTrip] = useState({});
-
   const [star , setStar] = useState(5)
+  const [tripReview , setTripReview] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:5000/trips/${id}`)
@@ -54,7 +54,7 @@ const SingleService = () => {
         id : _id,
         serviceName : tripName,
         reviewerName : form.name.value,
-        reviewerEmail : user?.email,
+        email : user?.email,
         date : new Date(),
         starRatings : parseInt(star),
         comments : form.comments.value,
@@ -74,12 +74,19 @@ const SingleService = () => {
         })
         .catch(err => console.log(err))
 
-
-
-
-
   };
-//   console.log(user);
+
+  useEffect(()=>{
+
+            fetch(`http://localhost:5000/reviews?id=${_id}`)
+            .then(res => res.json())
+            .then(data =>{
+                console.log(data);
+                setTripReview(data)
+            })
+
+
+  } ,[_id])
 
 
   return (
@@ -157,7 +164,11 @@ const SingleService = () => {
               <h2 className="text-center font-medium text-2xl">
                 Latest Reviews
               </h2>
-              <div className="reviews-area">here all review fetched</div>
+              <div className="reviews-area w-2/3 mx-auto my-7 flex flex-col gap-4">
+                       {
+                          tripReview.length > 0 ?  tripReview.map(singleReview => <ReviewCard key={singleReview._id} review={singleReview}></ReviewCard>) : <p className="text-center my-5 font-bold text-xl">No Reviews Found</p>  
+                       } 
+                </div>
             </div>
 
             <div className="w-1/3 mx-auto my-10">
