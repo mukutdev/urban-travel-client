@@ -8,6 +8,7 @@ import MyReviews from "../pages/MyReviews/MyReviews";
 import Register from "../pages/Register/Register";
 import Services from "../pages/Services/Services";
 import SingleService from "../pages/SingleService/SingleService";
+import UpdateReview from "../pages/UpdateReview/UpdateReview";
 
 export const router = createBrowserRouter([
     {
@@ -29,6 +30,11 @@ export const router = createBrowserRouter([
             {
                 path:'/myreviews',
                 element:<MyReviews />,
+            },
+            {
+                path:'/myreviews/edit/:id',
+                element:<UpdateReview/>,
+                
             },
             {
                 path:'/addnewservice',

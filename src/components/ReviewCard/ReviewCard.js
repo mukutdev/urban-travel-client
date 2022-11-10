@@ -4,7 +4,7 @@ import { AiTwotoneStar } from 'react-icons/ai';
 const ReviewCard = ({review}) => {
 
     console.log(review);
-    const {serviceName , reviewerName , reviewerEmail , starRatings ,comments , photoURL} = review
+    const {serviceName , reviewerName , starRatings ,comments , photoURL} = review
     return (
         <div className='shadow bg-slate-50 py-3 px-6 rounded-md flex justify-start items-center gap-10 my-2'>
              <div>

@@ -1,7 +1,9 @@
+/* eslint-disable react/style-prop-object */
 import { Tooltip } from "flowbite-react";
 import React, { useContext, useEffect, useState } from "react";
 import { AiTwotoneStar } from "react-icons/ai";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import myReviewImg from "../../assets/images//pexels-suliman-sallehi-2128181.jpg";
 import BgImage from "../../components/BgImage/BgImage";
@@ -9,7 +11,8 @@ import { AuthProvider } from "../../context/AuthContext";
 const MyReviews = () => {
   const { user } = useContext(AuthProvider);
   const [myReviews, setMyReviews] = useState([]);
-  const [refresh, setRefresh] = useState(false);
+//   const [refresh, setRefresh] = useState(false);
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetch(`http://localhost:5000/emailBase?email=${user?.email}`)
@@ -19,6 +22,9 @@ const MyReviews = () => {
         setMyReviews(data);
       });
   }, [user?.email]);
+
+
+  //deelete review function
 
 
   const handleDeleteReview = id =>{
@@ -50,6 +56,13 @@ const MyReviews = () => {
           swal("Your review  is safe!"); 
         }
       });
+  }
+
+  //update review function
+
+  const handleUpdate = (id) =>{
+    console.log(id);
+    navigate(`/myreviews/edit/${id}`)
   }
 
   return (
@@ -102,7 +115,7 @@ const MyReviews = () => {
                     </div>
                     <div className="action ml-auto mr-9 flex">
                       <Tooltip content="Edit Review" style="light">
-                        <button className="bg-green-500 text-lg  p-2 text-white mr-2 rounded ">
+                        <button onClick={()=>handleUpdate(singleReview._id)} className="bg-green-500 text-lg  p-2 text-white mr-2 rounded ">
                           <FiEdit></FiEdit>
                         </button>
                       </Tooltip>
