@@ -15,6 +15,7 @@ import { IoMdReturnLeft } from "react-icons/io";
 import { AuthProvider } from "../../context/AuthContext";
 import { Label, Select, Textarea, TextInput } from "flowbite-react";
 import ReviewCard from "../../components/ReviewCard/ReviewCard";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 const SingleService = () => {
   const { user } = useContext(AuthProvider);
   const { id } = useParams();
@@ -98,7 +99,12 @@ const SingleService = () => {
           <div className="w-5/6 mx-auto">
             <div className="">
               <div className="bg-white p-6 rounded-lg mx-auto w-3/4">
-                <img src={imgCover} className="h-3/4 w-full rounded" alt="" />
+              <PhotoProvider>
+        <PhotoView src={imgCover}>
+        <img className="h-3/4 w-full rounded cursor-pointer" alt="" src={imgCover}  />
+        </PhotoView>
+      </PhotoProvider>
+               
                 <div className="bg-gray-100 my-4 p-4 rounded-lg flex justify-between px-4">
                   <li className="flex gap-1 text-slate-700 items-center">
                     <AiOutlineClockCircle />{" "}

@@ -5,6 +5,8 @@ import { FiUsers } from "react-icons/fi";
 import { FaDollarSign } from "react-icons/fa";
 import { AiTwotoneStar } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import 'react-photo-view/dist/react-photo-view.css';
 
 const TripCard = ({ trips }) => {
   const {
@@ -22,7 +24,12 @@ const TripCard = ({ trips }) => {
   return (
     <div className="shadow-lg">
       <div className=" relative w-full">
-        <img className="h-80 w-full" src={thumbnail} alt="" />
+      <PhotoProvider>
+        <PhotoView src={thumbnail}>
+        <img className="h-80 w-full cursor-pointer" src={thumbnail} alt="" />
+        </PhotoView>
+      </PhotoProvider>
+        {/* <img className="h-80 w-full" src={thumbnail} alt="" /> */}
 
         <div className="bg-sky-500 w-full px-4 py-3 flex justify-between gap-2 list-none absolute bottom-0 ">
           <li className="flex gap-1 text-white items-center">
